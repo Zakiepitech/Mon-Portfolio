@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+/* ======================== */
+/* Base                     */
+/* ======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #111;
+}
+
+h1 {
+  font-size: 5rem;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 24px;
+  font-weight: 800;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ======================== */
+/* Conteneur & Utils        */
+/* ======================== */
+.boxed {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.gap20 {
+  gap: 20px;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.w40 {
+  flex: 0 0 40%;
+}
+
+.w60 {
+  flex: 1;
+}
+
+/* 3 colonnes stables (gap 20px) */
+.w32 {
+  flex: 0 0 calc(33.333% - 20px);
+  max-width: calc(33.333% - 20px);
+}
+
+.dark {
+  background: #000;
+  color: #fff;
+}
+
+/* ======================== */
+/* Header (mêmes classes)   */
+/* ======================== */
+header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 1px 1px 25px rgba(0, 0, 0, 7);
+}
+
+header ul {
+  list-style: none;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+header ul li a:hover {
+  opacity: 0.7;
+}
+
+/* Taille du logo ~80px comme la vidéo */
+header img {
+  height: 80px;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* ======================== */
+/* Slider                   */
+/* ======================== */
+.slider {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+.slider-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.slider-content {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.slider-content p {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-top: 8px;
+}
+
+/* ======================== */
+/* Compétences              */
+/* ======================== */
+.skills {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.skill {
+  flex: 0 0 23%;
+  background: #fff;
+  color: #111;
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: center;
+  min-height: 140px;
+}
+
+.skill img {
+  height: 72px;
+  width: auto;
+  margin: 0 auto 10px;
+  object-fit: contain;
+}
+
+.skill h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #000;
+}
+
+/* ======================== */
+/* Réalisations (3 x 2)     */
+/* ======================== */
+.projects-grid {
+  justify-content: flex-start; 
+}
+
+.realisation {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.realisation a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #fff;
+}
+
+.realisation img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+  transition: 0.4s ease;
+}
+
+.realisation h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  width: max-content;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.realisation:hover img {
+  filter: brightness(60%);
+}
+
+.realisation:hover h3 {
+  opacity: 1;
+}
+
+
+.label {
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.value {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.contact {
+  border: 2px dashed #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-sizing: border-box;
+}
