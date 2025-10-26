@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #111;
+  background: #000;
 }
 
 img {
@@ -13,27 +18,30 @@ img {
   display: block;
 }
 
-body {
-  font-family: "Inter", sans-serif;
-  color: #111;
-}
-
 h1 {
-  font-size: 5rem;
+  font-size: 3.5rem;
   line-height: 1.1;
+  color: #fff;
+  text-align: center;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2.2rem;
   margin-bottom: 24px;
   font-weight: 800;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 p {
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.6;
 }
-
 
 .boxed {
   max-width: 1100px;
@@ -45,12 +53,13 @@ p {
   padding: 100px 0;
 }
 
-.flex {
-  display: flex;
+.white-section {
+  background: #fff;
+  color: #111;
 }
 
-.gap20 {
-  gap: 20px;
+.flex {
+  display: flex;
 }
 
 .wrap {
@@ -69,6 +78,10 @@ p {
   text-align: center;
 }
 
+.gap20 {
+  gap: 20px;
+}
+
 .w40 {
   flex: 0 0 40%;
 }
@@ -76,7 +89,6 @@ p {
 .w60 {
   flex: 1;
 }
-
 
 .w32 {
   flex: 0 0 calc(33.333% - 20px);
@@ -87,7 +99,6 @@ p {
   background: #000;
   color: #fff;
 }
-
 
 header {
   background: #fff;
@@ -108,20 +119,18 @@ header ul li a {
   text-decoration: none;
   color: #111;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 header ul li a:hover {
   opacity: 0.7;
 }
 
-
 header img {
   height: 80px;
   width: auto;
   border-radius: 8px;
 }
-
 
 .slider {
   width: 100%;
@@ -141,18 +150,13 @@ header img {
 .slider-content {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   color: #fff;
 }
-
-.slider-content p {
-  font-size: 2rem;
-  font-weight: 300;
-  margin-top: 8px;
-}
-
 
 .skills {
   display: flex;
@@ -185,9 +189,8 @@ header img {
   color: #000;
 }
 
-
 .projects-grid {
-  justify-content: flex-start; 
+  justify-content: flex-start;
 }
 
 .realisation {
@@ -231,25 +234,104 @@ header img {
 .realisation:hover h3 {
   opacity: 1;
 }
-
-
-.label {
-  display: block;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin: 10px 0;
-  font-size: 1.1rem;
-}
-
-.value {
-  display: block;
-  font-size: 1.1rem;
-}
-
-.contact {
+.contactInfo {
   border: 2px dashed #fff;
   border-radius: 15px;
   padding: 30px;
+  width: calc(33.333% - 20px);
   box-sizing: border-box;
+  background: #000;
+  color: #fff;
+  margin-bottom: 20px;
 }
 
+.title, .description {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  writing-mode: horizontal-tb !important;
+  transform: none !important;
+  white-space: normal;
+  word-break: break-word;
+  text-align: left;
+}
+
+
+@media(max-width:810px) {
+  header {
+    display: none;
+  }
+
+  .h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .slider {
+    height: 60vh;
+  }
+
+  .slider-content {
+    width: 90%;
+    margin-top: 20px;
+  }
+
+  .slider-content p {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    text-wrap: balance;
+  }
+
+  .toColumn {
+    flex-direction: column;
+  }
+
+  .mCenter {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .wm100 {
+    width: 100%;
+  }
+
+  .section {
+    padding: 50px 0;
+  }
+
+  .boxed {
+    max-width: 90%;
+  }
+
+  .flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contactInfo {
+    width: 100%;
+  }
+
+  .title, .description {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+}
