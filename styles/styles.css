@@ -193,7 +193,30 @@ header img {
   justify-content: flex-start;
 }
 
-/* --- STYLE DES CARTES PROJETS --- */
+.contactInfo {
+  border: 2px dashed #fff;
+  border-radius: 15px;
+  padding: 30px;
+  width: calc(33.333% - 20px);
+  box-sizing: border-box;
+  background: #000;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.title, .description {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  writing-mode: horizontal-tb !important;
+  transform: none !important;
+  white-space: normal;
+  word-break: break-word;
+  text-align: left;
+}
+
+/* --- STYLES PROJETS, OVERLAYS & LOADERS --- */
+
 .realisation {
   aspect-ratio: 1 / 1;
   position: relative;
@@ -218,7 +241,31 @@ header img {
   transition: 0.4s ease;
 }
 
-/* L'overlay noir qui apparait au survol */
+/* Le carré gris (placeholder) */
+.placeholder {
+  background-color: #1a1a1a;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Le rond qui tourne (loader) */
+.loader {
+  border: 4px solid #444;
+  border-top: 4px solid #00bfff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  transition: opacity 0.3s ease; /* Pour disparaitre en douceur au survol */
+}
+
+/* L'overlay noir (Titre + Description) */
 .project-overlay {
     position: absolute;
     top: 0;
@@ -230,20 +277,31 @@ header img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: 0;
+    opacity: 0; /* Invisible par défaut sur PC */
     transition: opacity 0.3s ease;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
+    z-index: 10;
 }
 
-.realisation:hover .project-overlay {
-    opacity: 1;
+/* INTERACTIONS SOURIS (PC) */
+.realisation:hover .project-overlay,
+.placeholder:hover .project-overlay {
+    opacity: 1; /* Affiche le texte */
+}
+
+.realisation:hover img {
+  filter: brightness(60%);
+}
+
+.placeholder:hover .loader {
+    opacity: 0; /* Cache le rond pour mieux lire le texte */
 }
 
 .project-overlay h3 {
     color: #00bfff;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
     opacity: 1;
     position: static;
     transform: none;
@@ -251,64 +309,8 @@ header img {
 
 .project-overlay p {
     color: #fff;
-    font-size: 1rem;
-    line-height: 1.4;
-}
-
-.realisation:hover img {
-  filter: brightness(60%);
-}
-
-.contactInfo {
-  border: 2px dashed #fff;
-  border-radius: 15px;
-  padding: 30px;
-  width: calc(33.333% - 20px);
-  box-sizing: border-box;
-  background: #000;
-  color: #fff;
-  margin-bottom: 20px;
-}
-
-.title, .description {
-  display: block;
-  font-size: 1rem;
-  font-weight: 600;
-  writing-mode: horizontal-tb !important;
-  transform: none !important;
-  white-space: normal;
-  word-break: break-word;
-  text-align: left;
-}
-
-.placeholder {
-  background-color: #1a1a1a;
-  border-radius: 14px;
-  padding: 40px 20px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.loader {
-  border: 4px solid #444;
-  border-top: 4px solid #00bfff;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 12px;
-}
-
-.status {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  text-align: center;
-  animation: fade 0.5s ease-in-out;
+    font-size: 0.9rem;
+    line-height: 1.3;
 }
 
 @keyframes spin {
@@ -316,110 +318,55 @@ header img {
   100% { transform: rotate(360deg); }
 }
 
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.desktop-only {
-  display: block;
-}
-.mobile-only {
-  display: none;
-}
-
 /* --- MEDIA QUERIES MOBILE --- */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
 @media(max-width:810px) {
-  header {
-    display: none;
-  }
+  header { display: none; }
 
-  .h2 {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-  }
+  .slider { height: 60vh; }
+  .slider-content { width: 90%; margin-top: 20px; }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.8rem; margin-bottom: 30px; }
+  
+  .toColumn { flex-direction: column; }
+  .mCenter { justify-content: center; align-items: center; text-align: center; }
+  .wm100 { width: 100%; }
+  .boxed { max-width: 90%; }
+  .flex { flex-direction: column; align-items: center; }
+  .contactInfo { width: 100%; }
+  .title, .description { text-align: center; }
 
-  .slider {
-    height: 60vh;
-  }
-
-  .slider-content {
-    width: 90%;
-    margin-top: 20px;
-  }
-
-  .slider-content p {
-    margin-top: 20px;
-    font-size: 1.5rem;
-    text-wrap: balance;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  h2 {
-    font-size: 1.8rem;
-  }
-
-  h3 {
-    font-size: 1rem;
-  }
-
-  p {
-    font-size: 0.95rem;
-    text-wrap: balance;
-  }
-
-  .toColumn {
-    flex-direction: column;
-  }
-
-  .mCenter {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .wm100 {
-    width: 100%;
-  }
-
-  .section {
-    padding: 50px 0;
-  }
-
-  .boxed {
-    max-width: 90%;
-  }
-
-  .flex {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .contactInfo {
-    width: 100%;
-  }
-
-  .title, .description {
-    font-size: 0.95rem;
-    text-align: center;
-  }
-
-  /* Cache toutes les réalisations sur mobile... */
+  /* Gestion de l'affichage des projets sur mobile */
   .realisation {
-    display: none;
+    display: none; /* On cache tout par défaut */
   }
 
-  /* ...Sauf celles marquées show-on-mobile */
   .realisation.show-on-mobile {
-    display: block;
+    display: block; /* On affiche ceux qu'on veut */
     width: 100%;
     max-width: 100%;
   }
 
-  .projects-grid {
-    justify-content: center;
+  .projects-grid { justify-content: center; }
+
+  /* --- MOBILE : TEXTE TOUJOURS VISIBLE --- */
+  /* Sur mobile, on ne veut pas attendre le survol (impossible) */
+  
+  .project-overlay {
+      opacity: 1 !important; /* Toujours visible */
+      background: rgba(0, 0, 0, 0.6); /* Fond plus léger pour voir l'image */
+      justify-content: flex-end; /* Texte en bas */
+      padding-bottom: 20px;
   }
+
+  /* Pour les "À venir", on garde centré */
+  .placeholder .project-overlay {
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+  }
+
+  /* On laisse le loader visible sur mobile pour montrer que ça "travaille" */
+  .loader { opacity: 0.5; }
 }
