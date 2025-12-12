@@ -215,7 +215,7 @@ header img {
   text-align: left;
 }
 
-/* --- STYLES PROJETS, OVERLAYS & LOADERS --- */
+
 
 .realisation {
   aspect-ratio: 1 / 1;
@@ -241,7 +241,7 @@ header img {
   transition: 0.4s ease;
 }
 
-/* Le carré gris (placeholder) */
+
 .placeholder {
   background-color: #1a1a1a;
   width: 100%;
@@ -254,7 +254,7 @@ header img {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Le rond qui tourne (loader) */
+
 .loader {
   border: 4px solid #444;
   border-top: 4px solid #00bfff;
@@ -262,10 +262,10 @@ header img {
   width: 30px;
   height: 30px;
   animation: spin 1s linear infinite;
-  transition: opacity 0.3s ease; /* Pour disparaitre en douceur au survol */
+  transition: opacity 0.3s ease; 
 }
 
-/* L'overlay noir (Titre + Description) */
+
 .project-overlay {
     position: absolute;
     top: 0;
@@ -277,17 +277,17 @@ header img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: 0; /* Invisible par défaut sur PC */
+    opacity: 0; 
     transition: opacity 0.3s ease;
     padding: 15px;
     text-align: center;
     z-index: 10;
 }
 
-/* INTERACTIONS SOURIS (PC) */
+
 .realisation:hover .project-overlay,
 .placeholder:hover .project-overlay {
-    opacity: 1; /* Affiche le texte */
+    opacity: 1; 
 }
 
 .realisation:hover img {
@@ -295,7 +295,7 @@ header img {
 }
 
 .placeholder:hover .loader {
-    opacity: 0; /* Cache le rond pour mieux lire le texte */
+    opacity: 0; 
 }
 
 .project-overlay h3 {
@@ -318,7 +318,7 @@ header img {
   100% { transform: rotate(360deg); }
 }
 
-/* --- MEDIA QUERIES MOBILE --- */
+
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 
@@ -338,35 +338,34 @@ header img {
   .contactInfo { width: 100%; }
   .title, .description { text-align: center; }
 
-  /* Gestion de l'affichage des projets sur mobile */
+  
   .realisation {
-    display: none; /* On cache tout par défaut */
+    display: none; 
   }
 
   .realisation.show-on-mobile {
-    display: block; /* On affiche ceux qu'on veut */
+    display: block; 
     width: 100%;
     max-width: 100%;
   }
 
   .projects-grid { justify-content: center; }
 
-  /* --- MOBILE : TEXTE TOUJOURS VISIBLE --- */
-  /* Sur mobile, on ne veut pas attendre le survol (impossible) */
+  
   
   .project-overlay {
-      opacity: 1 !important; /* Toujours visible */
-      background: rgba(0, 0, 0, 0.6); /* Fond plus léger pour voir l'image */
-      justify-content: flex-end; /* Texte en bas */
+      opacity: 1 !important; 
+      background: rgba(0, 0, 0, 0.6); 
+      justify-content: flex-end; 
       padding-bottom: 20px;
   }
 
-  /* Pour les "À venir", on garde centré */
+  
   .placeholder .project-overlay {
       background: rgba(0, 0, 0, 0.7);
       justify-content: center;
   }
 
-  /* On laisse le loader visible sur mobile pour montrer que ça "travaille" */
+ 
   .loader { opacity: 0.5; }
 }
