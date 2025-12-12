@@ -215,8 +215,6 @@ header img {
   text-align: left;
 }
 
-
-
 .realisation {
   aspect-ratio: 1 / 1;
   position: relative;
@@ -241,7 +239,6 @@ header img {
   transition: 0.4s ease;
 }
 
-
 .placeholder {
   background-color: #1a1a1a;
   width: 100%;
@@ -254,7 +251,6 @@ header img {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-
 .loader {
   border: 4px solid #444;
   border-top: 4px solid #00bfff;
@@ -265,29 +261,27 @@ header img {
   transition: opacity 0.3s ease; 
 }
 
-
 .project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0; 
-    transition: opacity 0.3s ease;
-    padding: 15px;
-    text-align: center;
-    z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+  padding: 15px;
+  text-align: center;
+  z-index: 10;
 }
-
 
 .realisation:hover .project-overlay,
 .placeholder:hover .project-overlay {
-    opacity: 1; 
+  opacity: 1; 
 }
 
 .realisation:hover img {
@@ -295,22 +289,22 @@ header img {
 }
 
 .placeholder:hover .loader {
-    opacity: 0; 
+  opacity: 0; 
 }
 
 .project-overlay h3 {
-    color: #00bfff;
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-    opacity: 1;
-    position: static;
-    transform: none;
+  color: #00bfff;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  opacity: 1;
+  position: static;
+  transform: none;
 }
 
 .project-overlay p {
-    color: #fff;
-    font-size: 0.9rem;
-    line-height: 1.3;
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.3;
 }
 
 @keyframes spin {
@@ -318,10 +312,12 @@ header img {
   100% { transform: rotate(360deg); }
 }
 
-
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 
+/* ---------------------------------------------------- */
+/* RESPONSIVE MOBILE */
+/* ---------------------------------------------------- */
 @media(max-width:810px) {
   header { display: none; }
 
@@ -334,38 +330,43 @@ header img {
   .mCenter { justify-content: center; align-items: center; text-align: center; }
   .wm100 { width: 100%; }
   .boxed { max-width: 90%; }
+  /* Force la colonne sur mobile pour tous les éléments flex */
   .flex { flex-direction: column; align-items: center; }
   .contactInfo { width: 100%; }
   .title, .description { text-align: center; }
 
-  
   .realisation {
     display: none; 
   }
 
+  /* Version Mobile des Projets */
   .realisation.show-on-mobile {
     display: block; 
     width: 100%;
     max-width: 100%;
+    aspect-ratio: 16 / 9; /* Format cinéma pour moins de hauteur */
+    margin-bottom: 0;     /* Le gap:20px du parent gère l'espace */
   }
 
   .projects-grid { justify-content: center; }
 
-  
-  
+  /* Overlay adapté pour mobile : texte toujours visible en bas */
   .project-overlay {
       opacity: 1 !important; 
-      background: rgba(0, 0, 0, 0.6); 
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
       justify-content: flex-end; 
-      padding-bottom: 20px;
+      padding-bottom: 15px;
+  }
+  
+  /* Ajustement taille titre sur mobile */
+  .project-overlay h3 {
+      font-size: 1.3rem; 
   }
 
-  
   .placeholder .project-overlay {
       background: rgba(0, 0, 0, 0.7);
       justify-content: center;
   }
 
- 
   .loader { opacity: 0.5; }
 }
